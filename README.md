@@ -1,6 +1,6 @@
 # @gilbarbara/esbuilder
 
-[![NPM version](https://badge.fury.io/js/%40gilbarbara%2Fesbuilder.svg)](https://www.npmjs.com/package/%40gilbarbara%2Fesbuilder) [![CI](https://github.com/gilbarbara/esbuilder/actions/workflows/main.yml/badge.svg)](https://github.com/gilbarbara/esbuilder/actions/workflows/main.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/763ecebad04e15d4c1c0/maintainability)](https://codeclimate.com/github/gilbarbara/esbuilder/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/763ecebad04e15d4c1c0/test_coverage)](https://codeclimate.com/github/gilbarbara/esbuilder/test_coverage)
+[![npm version](https://badge.fury.io/js/@gilbarbara%2Fesbuilder.svg)](https://badge.fury.io/js/@gilbarbara%2Fesbuilder) [![CI](https://github.com/gilbarbara/esbuilder/actions/workflows/main.yml/badge.svg)](https://github.com/gilbarbara/esbuilder/actions/workflows/main.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/763ecebad04e15d4c1c0/maintainability)](https://codeclimate.com/github/gilbarbara/esbuilder/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/763ecebad04e15d4c1c0/test_coverage)](https://codeclimate.com/github/gilbarbara/esbuilder/test_coverage)
 
 Opinionated wrapper for esbuild
 
@@ -44,5 +44,5 @@ Give a ⭐️ if this project helped you!
 
 ## License
 
-Copyright © 2022 [Gil Barbara <gilbarbara@gmail.com>](https://github.com/gilbarbara).  
+Copyright © 2022 [Gil Barbara](https://github.com/gilbarbara).  
 This project is [MIT](https://github.com/gilbarbara/esbuilder/blob/main/LICENSE) licensed.
