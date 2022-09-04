@@ -1,9 +1,12 @@
 /* eslint-disable no-console */
 import * as fs from 'fs';
 
-import * as chalk from 'chalk';
-
 import { buildCJS, buildESM } from '../src/builders';
+
+jest.mock('chalk', () => ({
+  blue: (input: string) => input,
+  green: (input: string) => input,
+}));
 
 describe('builders', () => {
   beforeAll(() => {
@@ -30,8 +33,8 @@ describe('builders', () => {
       });
 
       expect(console.log).toHaveBeenCalledTimes(3);
-      expect(console.log).toHaveBeenNthCalledWith(1, chalk.blue('Building CommonJS...'));
-      expect(console.log).toHaveBeenNthCalledWith(3, chalk.green('✓ CommonJS build complete.'));
+      expect(console.log).toHaveBeenNthCalledWith(1, 'Building CommonJS...');
+      expect(console.log).toHaveBeenNthCalledWith(3, '✓ CommonJS build complete.');
 
       expect(fs.existsSync('./.tmp/dist/index.js')).toBe(true);
       expect(fs.existsSync('./.tmp/dist/index.js.map')).toBe(true);
@@ -53,8 +56,8 @@ describe('builders', () => {
       });
 
       expect(console.log).toHaveBeenCalledTimes(3);
-      expect(console.log).toHaveBeenNthCalledWith(1, chalk.blue('Building ESM...'));
-      expect(console.log).toHaveBeenNthCalledWith(3, chalk.green('✓ ESM build complete.'));
+      expect(console.log).toHaveBeenNthCalledWith(1, 'Building ESM...');
+      expect(console.log).toHaveBeenNthCalledWith(3, '✓ ESM build complete.');
 
       expect(fs.existsSync('./.tmp/dist/index.mjs')).toBe(true);
       expect(fs.existsSync('./.tmp/dist/index.mjs.map')).toBe(true);

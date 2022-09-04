@@ -1,22 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`cli should run the CommonJS build 1`] = `
-"[34mBuilding CommonJS...[39m
+"Building CommonJS...
 
   .tmp/dist/index.js             1.6kb  100.0%
    └ test/__fixtures__/index.ts  402b    24.1%
 
-[32m✓ CommonJS build complete.[39m
+✓ CommonJS build complete.
 "
 `;
 
 exports[`cli should run the ESM build 1`] = `
-"[34mBuilding ESM...[39m
+"Building ESM...
 
   .tmp/dist/index.mjs            302b   100.0%
    └ test/__fixtures__/index.ts  201b    66.6%
 
-[32m✓ ESM build complete.[39m
+✓ ESM build complete.
 "
 `;
 
