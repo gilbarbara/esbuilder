@@ -17,5 +17,51 @@
   "bugs": {
     "url": "https://github.com/gilbarbara/esbuilder/issues"
   },
-  "homepage": "https://github.com/gilbarbara/esbuilder#readme"
+  "homepage": "https://github.com/gilbarbara/esbuilder#readme",
+  "main": "dist/index.js",
+  "bin": {
+    "esbuilder": "dist/index.js"
+  },
+  "files": [
+    "src/index.ts"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "esbuild": "^0.15.6",
+    "esbuild-node-externals": "^1.5.0",
+    "yargs": "^17.5.1"
+  },
+  "devDependencies": {
+    "@gilbarbara/eslint-config": "^0.3.4",
+    "@gilbarbara/prettier-config": "^0.1.0",
+    "@gilbarbara/tsconfig": "^0.1.1",
+    "@types/jest": "^29.0.0",
+    "@types/node": "^18.7.14",
+    "del-cli": "^5.0.0",
+    "husky": "^8.0.1",
+    "is-lite": "^0.9.1",
+    "jest": "^29.0.1",
+    "repo-tools": "^0.2.2",
+    "ts-jest": "^28.0.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.2"
+  },
+  "scripts": {
+    "build": "del dist/* && ts-node src/index.ts --cjs --noSourcemap",
+    "lint": "eslint src test",
+    "test": "jest",
+    "test:coverage": "jest --bail --coverage",
+    "test:watch": "jest --watchAll --verbose",
+    "format": "prettier \"**/*.{js,jsx,json,yml,yaml,css,less,scss,ts,tsx,md,graphql,mdx}\" --write",
+    "validate": "npm run lint && npm run test:coverage",
+    "prepublishOnly": "npm run validate",
+    "prepare": "husky install"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@gilbarbara/eslint-config"
+    ]
+  },
+  "prettier": "@gilbarbara/prettier-config"
 }
