@@ -1,0 +1,21 @@
+{
+  "name": "@gilbarbara/esbuilder",
+  "version": "0.0.0",
+  "description": "Opinionated wrapper for esbuild",
+  "author": "Gil Barbara <gilbarbara@gmail.com>",
+  "keywords": [
+    "build",
+    "esbuild",
+    "esm",
+    "cjs"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gilbarbara/esbuilder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gilbarbara/esbuilder/issues"
+  },
+  "homepage": "https://github.com/gilbarbara/esbuilder#readme"
+}
