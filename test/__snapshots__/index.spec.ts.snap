@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index should return the help 1`] = `
+"Builds the source code into CommonJS and/or ESM modules.
+    
+Targets:
+  --cjs            Build CommonJS module
+  --esm            Build ESM module
+
+Build Options:
+  --input          Input files (default: ./src/index.ts)
+  --externals      Add external packages to the bundle
+  --noBundle       Skip bundling dependencies
+  --noSourcemap    Skip the sourcemap
+  --outDirectory   Output directory (default: ./dist)
+  --platform       The platform (default: node)
+  --target         The target environment (default: node14)
+"
+`;
