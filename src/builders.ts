@@ -1,20 +1,29 @@
 /* eslint-disable no-console */
 import * as chalk from 'chalk';
-import esbuild from 'esbuild';
+import esbuild, { BuildFailure } from 'esbuild';
 import { nodeExternalsPlugin } from 'esbuild-node-externals';
 
-interface BuildOptions {
-  entryPoints: string[];
-  externals: boolean;
-  noBundle: boolean;
-  noSourcemap: boolean;
-  outDirectory: string;
-  platform: 'node' | 'browser';
-  target: string;
+import { BuildOptions } from './types';
+
+const types = {
+  cjs: 'CommonJS',
+  esm: 'ESM',
+};
+
+/* istanbul ignore next */
+function onRebuild(type: 'cjs' | 'esm') {
+  return (error: BuildFailure | null) => {
+    if (error) {
+      console.error(chalk.red(`${types[type]} build failed, see error above.`));
+    } else {
+      console.log(chalk.green(`${types[type]} build complete, watching for changes...`));
+    }
+  };
 }
 
 export async function buildCJS(options: BuildOptions) {
-  const { entryPoints, externals, noBundle, noSourcemap, outDirectory, platform, target } = options;
+  const { entryPoints, externals, noBundle, noSourcemap, outDirectory, platform, target, watch } =
+    options;
 
   console.log(chalk.blue('Building CommonJS...'));
 
@@ -29,6 +38,7 @@ export async function buildCJS(options: BuildOptions) {
       plugins: externals ? [] : [nodeExternalsPlugin()],
       sourcemap: !noSourcemap,
       target,
+      watch: watch ? { onRebuild: onRebuild('cjs') } : undefined,
     });
 
     /* istanbul ignore next */
@@ -36,18 +46,24 @@ export async function buildCJS(options: BuildOptions) {
       console.error(cjsBuild.warnings);
     }
 
-    const analysis = await esbuild.analyzeMetafile(cjsBuild.metafile);
+    if (watch) {
+      console.log(chalk.green(`${types.cjs} build complete, watching for changes...`));
+    } else {
+      const analysis = await esbuild.analyzeMetafile(cjsBuild.metafile);
 
-    console.log(analysis);
-    console.log(chalk.green('✓ CommonJS build complete.'));
-  } catch (error) /* istanbul ignore next */ {
-    console.error(error);
-    process.exit(1);
+      console.log(analysis);
+      console.log(chalk.green(`✓ ${types.cjs} build complete.`));
+    }
+
+    return cjsBuild;
+  } catch (error: any) {
+    throw new Error(error);
   }
 }
 
 export async function buildESM(options: BuildOptions) {
-  const { entryPoints, externals, noBundle, noSourcemap, outDirectory, platform, target } = options;
+  const { entryPoints, externals, noBundle, noSourcemap, outDirectory, platform, target, watch } =
+    options;
 
   console.log(chalk.blue('Building ESM...'));
 
@@ -63,6 +79,7 @@ export async function buildESM(options: BuildOptions) {
       plugins: externals ? [] : [nodeExternalsPlugin()],
       sourcemap: !noSourcemap,
       target,
+      watch: watch ? { onRebuild: onRebuild('esm') } : undefined,
     });
 
     /* istanbul ignore next */
@@ -70,12 +87,17 @@ export async function buildESM(options: BuildOptions) {
       console.error(esmBuild.warnings);
     }
 
-    const analysis = await esbuild.analyzeMetafile(esmBuild.metafile);
+    if (watch) {
+      console.log(chalk.green(`${types.esm} build complete, watching for changes...`));
+    } else {
+      const analysis = await esbuild.analyzeMetafile(esmBuild.metafile);
 
-    console.log(analysis);
-    console.log(chalk.green('✓ ESM build complete.'));
-  } catch (error) /* istanbul ignore next */ {
-    console.error(error);
-    process.exit(1);
+      console.log(analysis);
+      console.log(chalk.green(`✓ ${types.esm} build complete.`));
+    }
+
+    return esmBuild;
+  } catch (error: any) {
+    throw new Error(error);
   }
 }

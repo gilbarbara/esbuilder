@@ -2,18 +2,7 @@
 /* eslint-disable no-console,unicorn/prefer-top-level-await */
 
 import { buildCJS, buildESM } from './builders';
-
-interface Arguments {
-  cjs: boolean;
-  esm: boolean;
-  externals: boolean;
-  input: string;
-  noBundle: boolean;
-  noSourcemap: boolean;
-  outDirectory: string;
-  platform: 'node' | 'browser';
-  target: string;
-}
+import { Arguments } from './types';
 
 const flags = require('yargs')(process.argv.slice(2)).argv;
 
@@ -26,7 +15,8 @@ const {
   noSourcemap = false,
   outDirectory = './dist',
   platform = 'node',
-  target = 'node14',
+  target = 'node16',
+  watch = false,
 } = flags as Arguments;
 
 const entryPoints = input.split(',').map(entry => entry.trim());
@@ -47,7 +37,8 @@ Build Options:
   --noSourcemap    Skip the sourcemap
   --outDirectory   Output directory (default: ./dist)
   --platform       The platform (default: node)
-  --target         The target environment (default: node14)
+  --target         The target environment (default: node16)
+  --watch          Enabling watch mode (default: false)
 `);
 
     process.exit(0);
@@ -62,6 +53,7 @@ Build Options:
       outDirectory,
       platform,
       target,
+      watch,
     });
   }
 
@@ -74,6 +66,7 @@ Build Options:
       outDirectory,
       platform,
       target,
+      watch,
     });
   }
 })();
