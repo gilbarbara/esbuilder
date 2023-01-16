@@ -1,6 +1,6 @@
 # @gilbarbara/esbuilder
 
-[![npm version](https://badge.fury.io/js/@gilbarbara%2Fesbuilder.svg)](https://badge.fury.io/js/@gilbarbara%2Fesbuilder) [![CI](https://github.com/gilbarbara/esbuilder/actions/workflows/main.yml/badge.svg)](https://github.com/gilbarbara/esbuilder/actions/workflows/main.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/763ecebad04e15d4c1c0/maintainability)](https://codeclimate.com/github/gilbarbara/esbuilder/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/763ecebad04e15d4c1c0/test_coverage)](https://codeclimate.com/github/gilbarbara/esbuilder/test_coverage)
+[![npm version](https://badge.fury.io/js/@gilbarbara%2Fesbuilder.svg)](https://badge.fury.io/js/@gilbarbara%2Fesbuilder) [![CI](https://github.com/gilbarbara/esbuilder/actions/workflows/main.yml/badge.svg)](https://github.com/gilbarbara/esbuilder/actions/workflows/main.yml) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=gilbarbara_esbuilder&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=gilbarbara_esbuilder) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=gilbarbara_esbuilder&metric=coverage)](https://sonarcloud.io/summary/new_code?id=gilbarbara_esbuilder)
 
 Opinionated wrapper for esbuild
 
