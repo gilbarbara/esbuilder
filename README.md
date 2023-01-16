@@ -7,7 +7,7 @@ Opinionated wrapper for esbuild
 ## Setup
 
 ```bash
-npm install esbuilder
+npm install @gilbarbara/esbuilder
 ```
 
 ## Usage
@@ -30,7 +30,8 @@ Build Options:
   --noSourcemap    Skip the sourcemap
   --outDirectory   Output directory (default: ./dist)
   --platform       The platform (default: node)
-  --target         The target environment (default: node14)
+  --target         The target environment (default: node16)
+  --watch          Watch for changes (default: false)
 ```
 
 ## Contributing
